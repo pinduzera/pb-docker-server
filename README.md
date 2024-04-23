@@ -32,7 +32,7 @@ You can set the following environmental variables, if none is set it will use th
 | PB_MAX_CLIENTS  | 64       | how many players can be connected to the server at once. Any further connection attempts at the full capacity will be rejected until somebody quits.                                                              |
 | PB_MAX_ROOMS    | 32       | how many rooms can be created at once.                                                                                                                                                                            |
 | PB_LATENCY_MODE | low      | adjusts the frequency of game packet transmission. Available options are low, medium and high. low is preferred for the best experience, but you might want to try the others if you're having connection issues. |
-| VNC_PASSWORD    | NONE     | Password needed to connect to the application's GUI.  See the  VNC Password section for more details.                                                                                                             |
+| VNC_PASSWORD    | NONE     | Password needed to connect to the application's GUI.                                                                                                             |
 | DISPLAY_WIDTH   | 1920     | Width (in pixels) of the PB Server application's window.                                                                                                                                                          |
 | DISPLAY_HEIGHT  | 1080     | Height (in pixels) of the PB Server application's window.    
 
@@ -43,4 +43,4 @@ You can access the server through a remote VNC session at `localhost:5900` (or `
 ```bash
 docker run -d --rm --name pbserver -p 5900:5900  -p 64640:64640 pbserver
 ```
-
+For other VNC and base container options check https://github.com/jlesage/docker-baseimage-gui
