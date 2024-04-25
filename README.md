@@ -13,6 +13,8 @@ Clone this repository and build the container
 ```bash
 git clone https://github.com/pinduzera/pb-docker-server
 
+cd pb-docker-server
+
 docker build . -t pbserver
 ```
 
