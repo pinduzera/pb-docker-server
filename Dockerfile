@@ -1,12 +1,9 @@
 # Pull base image.
-FROM jlesage/baseimage-gui:debian-11
-
-# Set the name of the application.
-ENV APP_NAME="PBServer"
+FROM mcr.microsoft.com/dotnet/sdk:8.0
 
 # Download Required Packages
 RUN apt-get update && \
-    apt-get install -y megatools zip mono-devel xterm && \
+    apt-get install -y megatools zip && \
     apt-get clean
 
 # Set directory
@@ -14,15 +11,17 @@ RUN mkdir -p pbserver
 WORKDIR "/pbserver"
 
 # Download the PB Server
-RUN megadl https://mega.nz/file/mPZSgS4T#3vnm7zR2Tz3ZANt0tnFaorMy4f7j9cpVjgRvMQI0qeo && \
-    unzip powerbomberman077c_server.zip && \
-    rm powerbomberman077c_server.zip
+RUN megadl https://mega.nz/file/HXBj0RDQ#Rhi8RboNivtuBPcVR9h7FoRfXOflnr1789MwKSN_HqI && \
+    unzip powerbomberman078b_server_hotfix3.zip && \
+    rm powerbomberman078b_server_hotfix3.zip
+
+# copy entrypoint
+COPY entrypoint.sh /entrypoint.sh
 
 # Set directory permission to read/write
 RUN chmod -R 777 /pbserver/ && \
-    chown -R 1000:1000 /pbserver
+    chown -R 1000:1000 /pbserver && \
+    chmod 777 /entrypoint.sh
 
-# copy entrypoint
-COPY startapp.sh /startapp.sh
-
-
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["dotnet", "PBServer2.dll"]
