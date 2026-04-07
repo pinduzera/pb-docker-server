@@ -11,9 +11,9 @@ RUN mkdir -p pbserver
 WORKDIR "/pbserver"
 
 # Download the PB Server
-RUN megadl https://mega.nz/file/HXBj0RDQ#Rhi8RboNivtuBPcVR9h7FoRfXOflnr1789MwKSN_HqI && \
-    unzip powerbomberman078b_server_hotfix3.zip && \
-    rm powerbomberman078b_server_hotfix3.zip
+RUN megadl https://mega.nz/file/qLwD1QaQ#7ndyhHiGTPG_8FYpx_F7KK0eyeXTo5VNSf7zCOdeTNw && \
+    unzip powerbomberman078c_server.zip && \
+    rm powerbomberman078c_server.zip
 
 # copy entrypoint
 COPY entrypoint.sh /entrypoint.sh
